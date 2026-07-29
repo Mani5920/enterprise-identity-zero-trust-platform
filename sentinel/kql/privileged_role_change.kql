@@ -1,0 +1,5 @@
+AuditLogs
+| where TimeGenerated > ago(1d)
+| where Category =~ "RoleManagement"
+| where OperationName has_any ("Add member to role", "Add eligible member to role")
+| project TimeGenerated, OperationName, InitiatedBy, TargetResources, Result

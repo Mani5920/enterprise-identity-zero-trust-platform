@@ -1,0 +1,5 @@
+display_name,user_principal_name,department,role
+Alice HR,alice.hr@novasecure.example,HR,HR.Read
+David Finance,david.finance@novasecure.example,Finance,Finance.Read
+Priya Security,priya.security@novasecure.example,Security,Security.Investigate
+Mani PKI Admin,mani.pkiadmin@novasecure.example,Security,Certificate.Operate

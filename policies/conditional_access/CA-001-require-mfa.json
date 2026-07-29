@@ -1,0 +1,29 @@
+{
+  "policyId": "CA-001",
+  "displayName": "Require MFA for interactive users",
+  "state": "reportOnly",
+  "scope": {
+    "includeUsers": [
+      "All"
+    ],
+    "excludeUsers": [
+      "EmergencyAccessAccounts"
+    ],
+    "includeApplications": [
+      "All"
+    ]
+  },
+  "conditions": {
+    "clientAppTypes": [
+      "browser",
+      "mobileAppsAndDesktopClients"
+    ]
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "mfa"
+    ]
+  },
+  "notes": "Design specification only. Translate through approved Microsoft Graph tooling in a personal lab."
+}

@@ -1,0 +1,17 @@
+flowchart LR
+    U[Users and Administrators] --> E[Microsoft Entra ID]
+    E --> CA[Conditional Access + MFA]
+    CA --> G[Application Gateway]
+    G --> W[Employee Portal]
+    G --> A[Sensitive API]
+    A --> K[Azure Key Vault]
+    A --> L[Log Analytics]
+    E --> L
+    G --> L
+    K --> L
+    L --> S[Microsoft Sentinel]
+    P[Private PKI] --> G
+    P --> A
+    T[Terraform + GitHub Actions] --> G
+    T --> K
+    T --> L

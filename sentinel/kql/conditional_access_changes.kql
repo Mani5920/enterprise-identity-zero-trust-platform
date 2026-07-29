@@ -1,0 +1,4 @@
+AuditLogs
+| where TimeGenerated > ago(1d)
+| where OperationName has "conditional access"
+| project TimeGenerated, OperationName, Result, InitiatedBy, TargetResources

@@ -1,0 +1,7 @@
+SigninLogs
+| where TimeGenerated > ago(1h)
+| where ResultType != 0
+| summarize FailedAttempts=count(), Applications=make_set(AppDisplayName, 10)
+    by UserPrincipalName, IPAddress, bin(TimeGenerated, 15m)
+| where FailedAttempts >= 5
+| order by FailedAttempts desc

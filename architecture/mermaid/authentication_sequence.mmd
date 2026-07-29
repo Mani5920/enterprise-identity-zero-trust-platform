@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant User
+    participant Entra as Microsoft Entra ID
+    participant App as Employee Portal
+    participant API as Sensitive API
+    participant Vault as Key Vault
+    participant SIEM as Sentinel
+
+    User->>App: Request protected resource
+    App->>Entra: OIDC authentication request
+    Entra->>Entra: MFA + Conditional Access
+    Entra-->>App: Signed identity/access token
+    App->>API: Token + client certificate
+    API->>API: Validate token, role, certificate
+    API->>Vault: Managed identity token request
+    Vault-->>API: Authorised secret only
+    API-->>User: Protected response
+    Entra-->>SIEM: Sign-in/audit logs
+    API-->>SIEM: Auth and access events
+    Vault-->>SIEM: Diagnostic logs

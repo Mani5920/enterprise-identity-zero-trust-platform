@@ -1,0 +1,6 @@
+AzureDiagnostics
+| where ResourceType =~ "VAULTS"
+| where ResultType !in ("Success", "200")
+| summarize DeniedRequests=count()
+    by CallerIPAddress, identity_claim_upn_s, OperationName, bin(TimeGenerated, 15m)
+| where DeniedRequests >= 3
